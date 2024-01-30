@@ -1,9 +1,7 @@
 package com.ecommerceapp.EcommerceApp.service;
 
 import java.util.List;
-import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ecommerceapp.EcommerceApp.repository.ICategoryRepository;
@@ -22,6 +20,16 @@ public class CategoryService {
 
     public List<Category> findCategories() {
         return categoryRepository.findAll();
+    }
+
+    public void updateCategory(int categoryId, Category updatedCategory) {
+        Category category = categoryRepository.findById(categoryId).get();
+        category.setCategoryName(updatedCategory.getCategoryName());
+        category.setDescription(updatedCategory.getDescription());
+        // category.setProducts(updatedCategory.getProducts());
+        category.setImageUrl(updatedCategory.getImageUrl());
+        categoryRepository.save(category);
+
     }
 
 }
