@@ -45,6 +45,7 @@ public class CategoryController {
     @PostMapping("/update/{categoryId}")
     public ResponseEntity<String> updateCategory(@PathVariable("categoryId") int categoryId,
             @RequestBody Category category) {
+
         categoryService.updateCategory(categoryId, category);
         return new ResponseEntity<>("Category updated successfully", HttpStatus.OK);
 
