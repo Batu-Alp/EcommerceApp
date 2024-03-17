@@ -25,7 +25,7 @@ public class Category {
 
     private @NotNull String imageUrl;
 
-    Set<Product> products;
+    // Set<Product> products;
 
     public Category() {
     }
@@ -77,12 +77,15 @@ public class Category {
     public void setId(Integer id) {
         this.id = id;
     }
-
-    public Set<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(Set<Product> products) {
-        this.products = products;
-    }
+    /*
+     * 
+     * public Set<Product> getProducts() {
+     * return products;
+     * }
+     * 
+     * public void setProducts(Set<Product> products) {
+     * this.products = products;
+     * }
+     * 
+     */
 }

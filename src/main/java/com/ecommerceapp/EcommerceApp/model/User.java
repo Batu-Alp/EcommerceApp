@@ -3,14 +3,17 @@ package com.ecommerceapp.EcommerceApp.model;
 import java.util.List;
 
 import com.ecommerceapp.EcommerceApp.model.enums.Role;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 
@@ -31,6 +34,8 @@ public class User {
     @Column(name = "role")
     private Role role;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Order> orders;
 
     public User(Integer id, @NotNull String firstName, @NotNull String lastName, @NotNull String email,
