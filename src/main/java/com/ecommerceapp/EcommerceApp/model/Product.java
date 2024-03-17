@@ -3,11 +3,17 @@ package com.ecommerceapp.EcommerceApp.model;
 import java.util.List;
 
 import com.ecommerceapp.EcommerceApp.dto.ProductDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 
@@ -24,8 +30,17 @@ public class Product {
     private @NotNull String image;
     private @NotNull double price;
 
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "category_id", nullable = false)
     Category category;
+
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
     private List<Wishlist> wishlist;
+
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
     private List<ShoppingCart> shoppingCart;
 
     public Product(ProductDTO productDto, Category category) {
