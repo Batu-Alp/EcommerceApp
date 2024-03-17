@@ -2,11 +2,14 @@ package com.ecommerceapp.EcommerceApp.model;
 
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 
@@ -25,7 +28,8 @@ public class Category {
 
     private @NotNull String imageUrl;
 
-    // Set<Product> products;
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    Set<Product> products;
 
     public Category() {
     }
@@ -77,15 +81,13 @@ public class Category {
     public void setId(Integer id) {
         this.id = id;
     }
-    /*
-     * 
-     * public Set<Product> getProducts() {
-     * return products;
-     * }
-     * 
-     * public void setProducts(Set<Product> products) {
-     * this.products = products;
-     * }
-     * 
-     */
+
+    public Set<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Set<Product> products) {
+        this.products = products;
+    }
+
 }

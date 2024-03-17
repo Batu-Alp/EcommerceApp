@@ -1,6 +1,7 @@
 package com.ecommerceapp.EcommerceApp.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,10 @@ public class CategoryService {
 
     public List<Category> findCategories() {
         return categoryRepository.findAll();
+    }
+
+    public Optional<Category> findByCategoryId(Integer categoryID) {
+        return categoryRepository.findById(categoryID);
     }
 
     public void updateCategory(int categoryId, Category updatedCategory) {

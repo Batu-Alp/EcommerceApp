@@ -25,7 +25,7 @@ public class CategoryController {
 
     @GetMapping("/")
     public ResponseEntity<String> getCategories() {
-        return new ResponseEntity<>("Product", HttpStatus.OK);
+        return new ResponseEntity<>("Product Page", HttpStatus.OK);
     }
 
     @PostMapping("/create")
