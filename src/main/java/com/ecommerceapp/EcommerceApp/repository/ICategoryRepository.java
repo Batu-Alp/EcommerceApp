@@ -8,6 +8,6 @@ import com.ecommerceapp.EcommerceApp.model.Category;
 @Repository
 public interface ICategoryRepository extends JpaRepository<Category, Integer> {
 
-    Category findByCategoryName(String categoryName);
+    Category findByCategoryName(Integer categoryID);
 
 }
